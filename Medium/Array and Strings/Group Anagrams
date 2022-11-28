@@ -8,7 +8,13 @@ class Solution {
             char[] c = strs[i].toCharArray();
             Arrays.sort(c);
             String s = new String(c);
-            hm.computeIfAbsent(s, k-> new ArrayList()).add(strs[i]);
+            List<String> al = new ArrayList<>();
+            al.add(strs[i]);
+            if(hm.containsKey(s)){
+                hm.get(s).add(strs[i]);
+            } else {
+                hm.put(s, al);
+            }
         }
         return new ArrayList(hm.values());
     }
