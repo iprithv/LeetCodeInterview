@@ -1,0 +1,25 @@
+// https://leetcode.com/explore/interview/card/top-interview-questions-medium/103/array-and-strings/779/
+
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int pointer1 = 0;
+        int pointer2 = 0;
+        int Max = 0;
+        HashSet<Character> hs = new HashSet<>();
+        
+        while(pointer2 < s.length()) {
+            if(!hs.contains(s.charAt(pointer2))) {
+                hs.add(s.charAt(pointer2));
+                Max = Math.max(hs.size(), Max);
+                pointer2++;
+            } else {
+                hs.remove(s.charAt(pointer1));
+                pointer1++;
+            }
+        }
+        
+        return Max;
+    }
+}
+
+ 
