@@ -1,0 +1,13 @@
+// https://leetcode.com/explore/interview/card/top-interview-questions-easy/94/trees/555/
+
+class Solution {
+    public int maxDepth(TreeNode root) {
+        if(root == null)
+            return 0;
+        
+        int lth = maxDepth(root.left);
+        int rth = maxDepth(root.right);
+        
+        return Math.max(lth,rth) + 1;
+    }
+}
